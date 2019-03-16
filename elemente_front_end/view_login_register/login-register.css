@@ -1,0 +1,125 @@
+:root {
+    --color-primary: #4e64d5;
+    --color-secondary: #f8f8f8;
+    --color-btn: #e7e7e7;
+}
+.row:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.row > div {
+    float: left;
+    width: auto;
+}
+.row > .col-sm-2 {
+    width: 16.66%;
+}
+.row > .col-sm-3 {
+    width: 25%;
+}
+.row > .col-sm-4 {
+    width: 33.3%;
+}
+.row > .col-sm-6 {
+    width: 50%;
+}
+.row > .col-sm-12 {
+    width: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-secondary);
+    font-family: Overpass;
+}
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.container {
+  width: 100%;
+  position: center;
+  border-radius: 3px;
+  background-color: var(--color-secondary);
+  padding: 20px 10px 20px 20px;
+  /* margin: 10% 30% 0% 30%; */
+  margin: 150px 0;
+  border-top: 50px solid var(--color-primary);
+  border-bottom: 50px solid var(--color-primary);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.btn, input {
+  width: 80%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px auto;
+  opacity: 0.85;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+.btn{
+    text-align: center;
+    background-color: var(--color-btn);
+}
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+input[type=submit] {
+  background-color: var(--color-btn);
+  font-family: Overpass;
+  color: black;
+  cursor: pointer;
+}
+h2:first-child{
+    text-align:center;
+}
+div.loginfield {
+    width: 80%;
+    margin: auto;
+}
+input.inside_group {
+    display: block;
+    width: calc(100% - 45px);
+}
+div.loginfield .material-icons{
+    display: block;
+    float: left;
+    width: 40px;
+    margin-right: 5px;
+    margin-top: 10px;
+    position: center;
+}
+div.loginfield input{
+    display: inline-block;
+}
+#main-menu-bar {
+    width: 100%;
+    height:80px;
+    background: var(--color-primary);
+    overflow: hidden;
+    margin-bottom: 30px;
+    box-shadow: 0 0 2px 1px rgba(150, 150, 150, 0.3);
+
+}
+
+.main-menu .logo{
+    width:200px;
+}
+
+h3.logo {
+    color: #fff;
+    display: block;
+    padding: 8px 16px;
+    border: 2px solid #fff;
+    text-align: center;
+    border-radius: 7px;
+    font-weight: 300;
+    font-size: 24px;
+    margin: 5.5% 17%;
+}
