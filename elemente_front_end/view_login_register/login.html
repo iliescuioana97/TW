@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PenGUIniX</title>
+  <link rel="stylesheet" href="login-register.css">
+  <link href="https://fonts.googleapis.com/css?family=Overpass" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="main-menu" id="main-menu-bar">
+        <div class="main-menu logo">
+            <h3 class="logo">PenGUInix</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">&nbsp;</div>
+        <div class="col-sm-4">
+            <div class="container">
+                <form action="/login.py">
+                        <h2>Login</h2>
+                        <div class="loginfield">
+                            <i class="large material-icons">account_circle</i>
+                            <input class="inside_group" type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="loginfield">
+                            <i class="large material-icons">vpn_key</i>
+                            <input class="inside_group" type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <br>
+                        <input type="submit" value="Login">
+                </form>
+                <div class="row">
+                    <a href="register.html" class="btn">Register</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">&nbsp;</div>
+    </div>
+</body>
+</html>
