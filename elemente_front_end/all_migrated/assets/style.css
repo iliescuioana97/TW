@@ -528,6 +528,7 @@ html, body {
   width: 100%;
   padding: 20px 10px 20px 20px;
   margin: 150px 0;
+  margin-bottom: 0;
   border-top: 50px solid var(--color-primary);
   border-bottom: 50px solid var(--color-primary);
 }
