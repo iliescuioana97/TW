@@ -29,9 +29,7 @@ html, body {
     padding: 0 10px;
     margin-bottom: 12px;
 }
-.row > .col-sm-1 {
-    width: 8.333%;
-}
+
 .row > .col-sm-2 {
     width: 16.66%;
 }
@@ -48,6 +46,41 @@ html, body {
     width: 100%;
 }
 
+@media(min-width: 750px){
+    .row > .col-md-2 {
+        width: 16.66%;
+    }
+    .row > .col-md-3 {
+        width: 25%;
+    }
+    .row > .col-md-4 {
+        width: 33.3%;
+    }
+    .row > .col-md-6 {
+        width: 50%;
+    }
+    .row > .col-md-12 {
+        width: 100%;
+    }
+}
+
+@media(min-width: 1050px){
+    .row > .col-lg-2 {
+        width: 16.66%;
+    }
+    .row > .col-lg-3 {
+        width: 25%;
+    }
+    .row > .col-lg-4 {
+        width: 33.3%;
+    }
+    .row > .col-lg-6 {
+        width: 50%;
+    }
+    .row > .col-lg-12 {
+        width: 100%;
+    }
+}
 
 
 .main {
