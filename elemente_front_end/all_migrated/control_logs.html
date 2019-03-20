@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,700%7CRoboto:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="left-side responsive-handling">
+            <h3 class="logo">
+                PenGUInix
+                <a href="#" class="btn btn-outline btn-white btn-right ico-only sm-menu-only close-menu-btn"><i class="material-icons">menu</i></a>
+            </h3>
+            <div class="lscontainer">
+                <div class="machine-name">
+                    <i class="material-icons">computer</i>
+                    Node Machine A
+                </div>
+                <div class="left-menu">
+                    <a href="control.html"><i class="material-icons">home</i> Home</a>
+                    <a href="control_users.html"><i class="material-icons">supervisor_account</i> Users</a>
+                    <a href="control_fs.html"><i class="material-icons">folder_open</i> File System</a>
+                    <a href="control_logs.html" class="active"><i class="material-icons">receipt</i> Logs</a>
+                    <a href="control_console.html"><i class="material-icons">chrome_reader_mode</i> Console</a>
+                    <a href="control_configs.html"><i class="material-icons">settings</i> Configs</a>
+                    <a href="control_processes.html"><i class="material-icons">memory</i> Processes</a>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="top-right-line">
+                <div class="padder">
+                    <a href="#" class="btn btn-outline ico-only sm-menu-only open-menu-btn"><i class="material-icons">menu</i></a>
+                    <a href="machines.html" class="btn btn-outline"><i class="material-icons">arrow_back_ios</i> Machines</a>
+                </div>
+                <a href="#" class="user-info">
+                    <i class="material-icons">account_circle</i>
+                    artur99
+                </a>
+            </div>
+            <div class="container">
+                <h2 class="title">Logs</h2>
+                <div class="card">
+                    <div class="logs">
+                        <textarea>
+    Jul 17 22:04:25 router  dnsprobe[276]: dns query failed
+    Jul 17 22:04:29 router last message repeated 2 times
+    Jul 17 22:04:29 router  dnsprobe[276]: Primary DNS server Is Down... Switching To Secondary DNS server
+    Jul 17 22:05:08 router  dnsprobe[276]: Switching Back To Primary DNS server
+    Jul 17 22:26:11 debian -- MARK --
+    Jul 17 22:46:11 debian -- MARK --
+    Jul 17 22:47:36 router  -- MARK --
+    Jul 17 22:47:36 router  dnsprobe[276]: dns query failed
+    Jul 17 22:47:38  debian kernel: rtc: lost some interrupts at 1024Hz.
+    Jun 17 22:47:39  debian kernel: IN=eth0 OUT= MAC=00:0f:ea:91:04:07:00:08:5c:00:00:01:08:00 SRC=61.4.218.24 DST=192.168.1.100 LEN=60 TOS=0x00 PREC=0x00 TTL=46 ID=21599 DF PROTO=TCP SPT=59297 DPT=22 WINDOW=5840 RES=0x00 SYN URGP=0
+                    </textarea>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
