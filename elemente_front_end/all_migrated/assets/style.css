@@ -9,6 +9,7 @@ html, body {
     padding: 0;
     background: var(--color-secondary);
     font-family: Overpass, sans-serif;
+    height: 100%;
 }
 * {
     -webkit-box-sizing: border-box;
@@ -112,7 +113,8 @@ html, body {
     display: -webkit-flex;
     display: -ms-flex;
     display: flex;
-    min-height: 100vh;
+    /* min-height: 100vh; */
+    height: 100%;
 }
 .left-side {
     flex: 13%;
@@ -120,10 +122,18 @@ html, body {
     flex-grow: 1;
     background: var(--color-primary);
     color: #fff;
+    overflow-y: auto;
 }
 .right-side {
     flex: 87%;
     background: var(--color-secondary);
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    height: 100%;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 .sm-menu-only {
     display: none!important;
@@ -154,6 +164,7 @@ html, body {
     background: #fff;
     box-shadow: 0 0 2px 1px rgba(150, 150, 150, 0.3);
     height: 50px;
+    position: relative;
 }
 .top-right-line .padder {
     padding: 7px 16px;
@@ -162,6 +173,8 @@ html, body {
 .container {
     padding: 20px;
     text-align: left;
+    height: 100%;
+    overflow-y: auto;
 }
 .container.in {
     display: block;
@@ -395,6 +408,9 @@ html, body {
 .table-main td, .table-main th{
     border: 1px solid #ddd;
     padding: 7px 12px;
+    word-break: break-all;
+}
+.table-main td {
 }
 
 .table-main th{
@@ -626,21 +642,72 @@ html, body {
 }
 
 
-.processes-table tr th:nth-child(1){
+.processes-table tr th:nth-child(1),
+.processes-table tr td:nth-child(1){
     width: 8%;
 }
-.processes-table tr th:nth-child(2){
+.processes-table tr th:nth-child(2),
+.processes-table tr td:nth-child(2){
     width: 6%;
 }
-.processes-table tr th:nth-child(3){
+.processes-table tr th:nth-child(3),
+.processes-table tr td:nth-child(3){
     width: 6%;
 }
-.processes-table tr th:nth-child(4){
-    width: 25%;
+.processes-table tr th:nth-child(4),
+.processes-table tr td:nth-child(4){
+    width: 6%;
+}
+.processes-table tr th:nth-child(5),
+.processes-table tr td:nth-child(5){
+    width: 6%;
+}
+.processes-table tr th:nth-child(6),
+.processes-table tr td:nth-child(6){
+    width: 9%;
+}
+.processes-table tr th:nth-child(7),
+.processes-table tr td:nth-child(7){
+    width: 58%;
 }
 
-.logs textarea{
-    width:100%;
-    height:75vh;
+
+
+
+.logs {
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    height: 75vh;
+}
+.logs .left-file-menu {
+    flex-basis: 160px;
+    border: 1px solid #bbb;
+    border-right: 0;
+    background: #eee;
+}
+.logs .left-file-menu a {
+    display: block;
+    text-decoration: none;
+    padding: 5px 10px;
+    color: #333;
+    font-size: 14px;
+    /* margin: 2px 0; */
+    border-bottom: 1px solid rgba(100, 100, 100, 0.3);
+    background-color: rgba(100, 100, 100, 0.12);
+}
+.logs .left-file-menu a.active,
+.logs .left-file-menu a:hover {
+    background-color: rgba(100, 100, 100, 0.2);
+    border-right: 1px solid rgba(100, 100, 100, 0.2);
+    margin-right: -1px;
+}
+
+.logs textarea {
+    flex-grow: 1;
+    padding: 7px 10px;
     font-size: 12px;
+    border: 1px solid #bbb;
+    font-family: monospace;
+    background: #f9f9f9;
 }
