@@ -283,6 +283,7 @@ html, body {
 .btn-lg {
     display: block;
     text-align: center;
+    width: 100%;
 }
 .btn-outline {
     border: 2px solid var(--color-primary);
@@ -354,6 +355,11 @@ html, body {
     background: #25b314;
 }
 
+h3.title {
+    font-size: 25px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
 
 .top-right-line .btn-outline {
     margin: 0;
@@ -491,7 +497,26 @@ html, body {
         transform: scale3d(1, 1, 1);
     }
 }
+.text-center {
+    text-align: center;
+}
 
+.input-main {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    margin: 5px auto;
+    opacity: 0.85;
+    font-size: 17px;
+    line-height: 20px;
+    text-decoration: none;
+    background: var(--color-gray1);
+    color: black;
+}
+.input-main:hover,
+.input-main:focus {
+    opacity: 1;
+}
 
 
 
@@ -556,6 +581,7 @@ html, body {
     text-align: center;
     line-height: 40px;
     margin-right: 40px;
+    text-decoration: none;
 }
 
 .machines-list .machine-card {
@@ -667,7 +693,10 @@ html, body {
     display: inline-block;
 }
 
-
+#form-add-machine input[type=submit]{
+    padding: 3px 0;
+    margin: 6px 3px;
+}
 
 
 

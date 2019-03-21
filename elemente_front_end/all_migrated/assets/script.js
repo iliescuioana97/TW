@@ -900,12 +900,31 @@ var openModal = function(html) {
     document.querySelector(".modal").classList.add("show")
 }
 
+var handleAddMachine = function() {
+    document.querySelector("#add-machine").onclick = function() {
+        openModal(`
+            <form action="" id="form-add-machine" class="text-center">
+                <h3 class="title">Add new server</h3>
+                <input class="input-main" placeholder="Server Name"> <br>
+                <input class="input-main" placeholder="Server Address"> <br>
+                <input class="input-main" placeholder="Username"> <br>
+                <input class="input-main" placeholder="Password"> <br>
+                <input class="input-main" placeholder="Key"> <br>
+                <input type="submit" class="btn btn-outline btn-lg" value="Add Server">
+            </form>
+        `)
+    }
+}
+
 var ready = function() {
     document.querySelectorAll(".close-menu-btn").forEach(x => x.onclick = e => toggleMenu(e, "close"));
     document.querySelectorAll(".open-menu-btn").forEach(x => x.onclick = e => toggleMenu(e, "open"));
 
     if(document.querySelectorAll("#console_terminal").length){
         handleConsoleFunction();
+    }
+    if(document.querySelectorAll("#add-machine").length){
+        handleAddMachine();
     }
     if(document.querySelectorAll("#view-logs-container").length){
         handleLogContainerFunctions();
