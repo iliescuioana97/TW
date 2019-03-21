@@ -425,6 +425,73 @@ html, body {
     background: #fff;
 }
 
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: none;
+    z-index: 15;
+    align-items: center;
+    justify-content: center;
+}
+.modal.show {
+    display: flex;
+}
+.modal .modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+.modal .modal-container {
+    display: block;
+    width: 95%;
+    max-width: 300px;
+    /* height: 300px; */
+    flex-shrink: 1;
+    z-index: 25;
+    background: #fff;
+    padding: 16px 20px;
+    border-radius: 5px;
+}
+
+.animate-bounce {
+    animation-duration: 0.5s;
+    animation-name: BounceAnimation;
+}
+
+
+@keyframes BounceAnimation {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    24% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    50% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    70% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    85% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
 
 
 

@@ -2,6 +2,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     ready()
 });
 
+
+var showModal = function(data) {
+
+}
+
 var toggleMenu = function(e, action = "open") {
     if(e) e.preventDefault();
 
@@ -883,6 +888,18 @@ var handleFileManagerFunctions = function() {
     })
 }
 
+var registerModal = function() {
+    document.querySelector("body").insertAdjacentHTML("afterBegin", '<div class="modal"><div class="modal-overlay"></div><div class="modal-container animate-bounce"></div></div>')
+    document.querySelector(".modal-overlay").onclick = function(){
+        document.querySelector(".modal").classList.remove("show")
+    }
+}
+
+var openModal = function(html) {
+    document.querySelector(".modal .modal-container").innerHTML = html;
+    document.querySelector(".modal").classList.add("show")
+}
+
 var ready = function() {
     document.querySelectorAll(".close-menu-btn").forEach(x => x.onclick = e => toggleMenu(e, "close"));
     document.querySelectorAll(".open-menu-btn").forEach(x => x.onclick = e => toggleMenu(e, "open"));
@@ -900,4 +917,5 @@ var ready = function() {
         handleFileManagerFunctions();
         fileManagerLoadDir();
     }
+    registerModal();
 }
