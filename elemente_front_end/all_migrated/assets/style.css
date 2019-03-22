@@ -760,11 +760,11 @@ h3.title {
 }
 .processes-table tr th:nth-child(4),
 .processes-table tr td:nth-child(4){
-    width: 6%;
+    width: 7%;
 }
 .processes-table tr th:nth-child(5),
 .processes-table tr td:nth-child(5){
-    width: 6%;
+    width: 7%;
 }
 .processes-table tr th:nth-child(6),
 .processes-table tr td:nth-child(6){
