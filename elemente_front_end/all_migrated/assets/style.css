@@ -23,8 +23,8 @@ pre{
 .row {
     margin-left: -10px;
     margin-right: -10px;
-    width: 100%;
-}
+/*    width: 100%;
+*/}
 .row:after {
     content: '';
     display: block;
