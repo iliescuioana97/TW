@@ -16,6 +16,10 @@ html, body {
     box-sizing: border-box;
 }
 
+pre{
+    white-space: pre-wrap;
+}
+
 .row {
     margin-left: -10px;
     margin-right: -10px;
