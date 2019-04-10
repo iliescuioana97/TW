@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,700%7CRoboto:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="left-side responsive-handling">
+            <h3 class="logo">
+                PenGUInix
+                <a href="#" class="btn btn-outline btn-white btn-right ico-only sm-menu-only close-menu-btn"><i class="material-icons">menu</i></a>
+            </h3>
+            <div class="lscontainer">
+                <div class="machine-name">
+                    <i class="material-icons">computer</i>
+                    Node Machine A
+                </div>
+                <div class="left-menu">
+                    <a href="control.html"><i class="material-icons">home</i> Home</a>
+                    <a href="control_users.html"><i class="material-icons">supervisor_account</i> Users</a>
+                    <a href="control_fs.html"><i class="material-icons">folder_open</i> File System</a>
+                    <a href="control_logs.html"><i class="material-icons">receipt</i> Logs</a>
+                    <a href="control_console.html" class="active"><i class="material-icons">chrome_reader_mode</i> Console</a>
+                    <a href="control_configs.html"><i class="material-icons">settings</i> Configs</a>
+                    <a href="control_processes.html"><i class="material-icons">memory</i> Processes</a>
+                    <a href="docs.html"><i class="material-icons">book</i> Docs</a>
+                </div>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="top-right-line">
+                <div class="padder">
+                    <a href="#" class="btn btn-outline ico-only sm-menu-only open-menu-btn"><i class="material-icons">menu</i></a>
+                    <a href="machines.html" class="btn btn-outline"><i class="material-icons">arrow_back_ios</i> Machines</a>
+                </div>
+                <a href="#" class="user-info">
+                    <i class="material-icons">account_circle</i>
+                    artur99
+                </a>
+            </div>
+            <div class="container">
+                <h2 class="title">Console</h2>
+                <div class="card">
+                    <div class="console" id="console_terminal">
+                        <pre class="output"></pre>
+                        <form action=""><input class="input" type="text"></form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
