@@ -16,11 +16,15 @@ html, body {
     box-sizing: border-box;
 }
 
+pre{
+    white-space: pre-wrap;
+}
+
 .row {
     margin-left: -10px;
     margin-right: -10px;
-    width: 100%;
-}
+/*    width: 100%;
+*/}
 .row:after {
     content: '';
     display: block;
@@ -756,11 +760,11 @@ h3.title {
 }
 .processes-table tr th:nth-child(4),
 .processes-table tr td:nth-child(4){
-    width: 6%;
+    width: 7%;
 }
 .processes-table tr th:nth-child(5),
 .processes-table tr td:nth-child(5){
-    width: 6%;
+    width: 7%;
 }
 .processes-table tr th:nth-child(6),
 .processes-table tr td:nth-child(6){
