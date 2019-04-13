@@ -1,4 +1,4 @@
-npm update
+npm install
 node app.js stats       8001 &
 # node app.js users       8002 &
 # node app.js filesystem  8003 &

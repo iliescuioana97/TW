@@ -1,4 +1,6 @@
 const fs = require("fs")
+const http = require('http')
+var url = require('url')
 
 
 var run = function(argv) {
@@ -21,7 +23,12 @@ var run = function(argv) {
 
     try {
         console.log(`Starting service: ${service_name}:${port}`)
-        mod.run(port)
+        mod.init()
+
+        http.createServer(function(req, res) {
+            mod.req(req, res)
+        }).listen(port);
+
     }
     catch(e){
         console.log(`Error running service: ${e.message}.`)

@@ -151,8 +151,32 @@ ctr.get('/machines', (req, res) => {
 })
 
 
-ctr.get('/machine/(.*)', (req, res) => {
+ctr.get('/machine/(.*)/', (req, res) => {
     view.render(res, 'control.html')
+})
+ctr.get('/machine/(.*)/home', (req, res) => {
+    view.render(res, 'control.html')
+})
+ctr.get('/machine/(.*)/users', (req, res) => {
+    view.render(res, 'control_users.html')
+})
+ctr.get('/machine/(.*)/fs', (req, res) => {
+    view.render(res, 'control_fs.html')
+})
+ctr.get('/machine/(.*)/logs', (req, res) => {
+    view.render(res, 'control_logs.html')
+})
+ctr.get('/machine/(.*)/console', (req, res) => {
+    view.render(res, 'control_console.html')
+})
+ctr.get('/machine/(.*)/configs', (req, res) => {
+    view.render(res, 'control_configs.html')
+})
+ctr.get('/machine/(.*)/processes', (req, res) => {
+    view.render(res, 'control_processes.html')
+})
+ctr.get('/machine/(.*)/docs', (req, res) => {
+    view.render(res, 'docs.html')
 })
 
 
