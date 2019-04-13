@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400,700%7CRoboto:300,400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="/assets/style.css">
 
     <title>Document</title>
 </head>
 <body>
-    
+
 
     <div class="main">
         <div class="left-side responsive-handling">
@@ -53,29 +53,29 @@
                     <div class="col-sm-12 col-md-6 col-lg-3">
                         <div class="card colored red">
                             <i class="material-icons">view_agenda</i>
-                            <span class="title">300 MB</span>
+                            <span class="title msv" data-msv="ram_mem">300 MB</span>
                             <span class="subtitle">Memory</span>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-3">
                         <div class="card colored blue">
                             <i class="material-icons">memory</i>
-                            <span class="title">28%</span>
+                            <span class="title msv" data-msv="cpu_usage">28%</span>
                             <span class="subtitle">CPU Usage</span>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-3">
                         <div class="card colored orange">
                             <i class="material-icons">insert_drive_file</i>
-                            <span class="title">832</span>
+                            <span class="title msv" data-msv="fh_count">832</span>
                             <span class="subtitle">File Handlers</span>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-3">
                         <div class="card colored green">
-                            <i class="material-icons">memory</i>
-                            <span class="title">28%</span>
-                            <span class="subtitle">CPU Usage</span>
+                            <i class="material-icons">view_agenda</i>
+                            <span class="title msv" data-msv="ram_usage">28%</span>
+                            <span class="subtitle">RAM Usage</span>
                         </div>
                     </div>
                 </div>
@@ -89,6 +89,7 @@
         </div>
     </div>
 
-    <script src="assets/script.js"></script>
+    <script src="/assets/script.js"></script>
+    <script src="/assets/microservices.js"></script>
 </body>
 </html>

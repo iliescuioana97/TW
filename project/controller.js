@@ -143,13 +143,16 @@ ctr.post('/register', (req, res) => {
             view.render(res, 'register.html', ok ? {success: "Successfuly registered!"} : {error: "Error inserting into db."})
         })
     })
-
-
 })
 
 
 ctr.get('/machines', (req, res) => {
     view.render(res, 'machines.html')
+})
+
+
+ctr.get('/machine/(.*)', (req, res) => {
+    view.render(res, 'control.html')
 })
 
 
