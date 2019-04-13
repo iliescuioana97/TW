@@ -6,40 +6,48 @@ var mustache = require('mustache')
 
 
 var model = require('./model')
+var view = require('./view')('./templates/')
 
-var run = function(req, res) {
-    var path = url.parse(req.url, true).pathname
-    var m = req.method
-    var p = path.split('/').filter(x => x.length)
+var Controller = function(){
+    var routes_get = {};
+    var routes_post = {};
 
-    console.log(m, p)
+    var run = function(req, res) {
+        var path = url.parse(req.url, true).pathname.trim()
+        var m = req.method
 
-    if(p.length == 0) {
-        controller['index'](req, res)
+        var routes = routes_get;
+        if(m == 'POST') routes = routes_post;
+
+        for(var route in routes){
+            if(RegExp('^' + route + '$').test(path)){
+                return routes[route](req, res)
+            }
+        }
+
+        if(Object.keys(routes_get).indexOf('404') > -1){
+            return routes_get['404'](req, res)
+        }
+
+        return res.end("404")
     }
-    else if(m == 'GET' && p[0] == 'login') {
-        controller['login_get'](req, res)
+
+    var redir = (res, path) => {
+        res.writeHead(301, {'Location': path})
+        res.end()
     }
-    else if(m == 'POST' && p[0] == 'login') {
-        controller['login_post'](req, res)
-    }
-    else if(m == 'GET' && p[0] == 'register') {
-        controller['register_get'](req, res)
-    }
-    else if(m == 'POST' && p[0] == 'register') {
-        controller['register_post'](req, res)
-    }
-    else if(m == 'GET' && p[0] == 'machines') {
-        controller['machines_get'](req, res)
-    }
-    else if(m == 'POST' && p[0] == 'machines') {
-        controller['register_post'](req, res)
-    }
-    else if(m == 'GET' && p[0] == 'assets') {
-        controller['assets'](req, res)
-    }
-    else {
-        controller['404'](req, res)
+
+    var h_post = (route, fct) => routes_post[route] = fct
+    var h_get = (route, fct) => routes_get[route] = fct
+    var h_any = (route, fct) => routes_get[route] = routes_post[route] = fct
+
+    return {
+        post: h_post,
+        get: h_get,
+        any: h_any,
+        run: run,
+
+        redir: redir,
     }
 }
 
@@ -56,68 +64,19 @@ var parse_body = function(req, next){
     })
 }
 
-var controller = {}
 
-controller['index'] = function(req, res) {
-    res.writeHead(301, {'Location': '/login'})
-    res.end()
-}
+var ctr = Controller()
 
-controller['404'] = function(req, res) {
+ctr.get('/', (req, res) => {
+    ctr.redir(res, '/login')
+})
+
+ctr.get('404', (req, res) => {
     res.writeHead(404, {'Content-Type': 'text/html'});
     res.end('404')
-}
+})
 
-controller['login_get'] = function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-
-    fs.readFile('./templates/login.html', 'utf-8', function(err, data){
-        if(err) return console.log("Error reading:", err.message)
-        res.end(mustache.to_html(data, []))
-    })
-}
-
-controller['login_post'] = function(req, res) {
-    model.user.login(req.body.username, req.body.password, function(msg){
-        res.writeHead(200, {'Content-Type': 'text/html'});
-
-        fs.readFile('./templates/login.html', 'utf-8', function(err, data){
-            if(err) return console.log("Error reading:", err.message)
-            res.end(mustache.to_html(data, msg))
-        })
-    })
-}
-
-controller['register_get'] = function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-
-    fs.readFile('./templates/register.html', 'utf-8', function(err, data){
-        if(err) return console.log("Error reading:", err.message)
-        res.end(mustache.to_html(data, []))
-    })
-}
-
-controller['register_post'] = function(req, res) {
-    model.user.register(req.body.username, req.body.password, req.body.cpassword, function(msg){
-        res.writeHead(200, {'Content-Type': 'text/html'});
-
-        fs.readFile('./templates/register.html', 'utf-8', function(err, data){
-            if(err) return console.log("Error reading:", err.message)
-            res.end(mustache.to_html(data, msg))
-        })
-    })
-}
-
-controller['machines_get'] = function(req, res) {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-
-    fs.readFile('./templates/machines.html', 'utf-8', function(err, data){
-        if(err) return console.log("Error reading:", err.message)
-        res.end(data);
-    })
-}
-
-controller['assets'] = function(req, res) {
+ctr.get('/assets/.*', (req, res) => {
     var path = url.parse(req.url, true).pathname
 
     var ctype = 'application/javascript'
@@ -136,7 +95,62 @@ controller['assets'] = function(req, res) {
 
         res.end(data);
     })
-}
+})
+
+ctr.get('/login', (req, res) => {
+    view.render(res, 'login.html')
+})
+
+ctr.get('/register', (req, res) => {
+    view.render(res, 'register.html')
+})
+
+ctr.post('/login', (req, res) => {
+    var user = req.body.username
+    var pass = req.body.password
+
+
+    model.user.check_login(user, pass, function(msg){
+        if(msg === true){
+            //Credentials ok
+            ctr.redir(res, '/machines')
+            return
+        }
+
+        view.render(res, 'login.html', {error: "Wrong username or password."})
+    })
+})
+
+ctr.post('/register', (req, res) => {
+    var user = req.body.username
+    var pass = req.body.password
+    var cpass = req.body.cpassword
+
+    var msg = {}
+
+    if(pass != cpass) msg.error = "Passwords don't match."
+    else if(pass.length < 6) msg.error = "Password is too short."
+    else if(user.length < 4) msg.error = "Username is too short."
+
+    if(msg.error) return view.render(res, 'register.html', msg)
+
+    model.user.user_exists(user, function(exists){
+        if(exists){
+            return view.render(res, 'register.html', {error: "Username is already used."})
+        }
+
+        model.user.register(user, pass, function(ok){
+            view.render(res, 'register.html', ok ? {success: "Successfuly registered!"} : {error: "Error inserting into db."})
+        })
+    })
+
+
+})
+
+
+ctr.get('/machines', (req, res) => {
+    view.render(res, 'machines.html')
+})
 
 
 
@@ -144,7 +158,7 @@ controller['assets'] = function(req, res) {
 module.exports = {
     run: function(req, res){
         parse_body(req, function(req){
-            run(req, res)
+            ctr.run(req, res)
         })
     }
 }

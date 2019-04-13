@@ -5,7 +5,7 @@ var fs = require('fs');
 var controller = require('./controller')
 
 http.createServer(function(req, res) {
-
     controller.run(req, res)
-
 }).listen(3001);
+
+console.log('Starting app on port 3001')

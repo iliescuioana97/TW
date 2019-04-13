@@ -15,7 +15,7 @@ var create_db = function(){
 var tokens = {}
 
 var user = {
-    login: function(user, pass, next) {
+    check_login: function(user, pass, next) {
         user = user.trim()
         pass = pass.trim()
         var pass_hash = crypto.createHmac('sha256', secret_key).update(pass).digest('hex');
@@ -24,53 +24,39 @@ var user = {
             if(err) console.log("Error querying db:", err.message)
 
             if(rows.length == 0) {
-                next({error: "Wrong username or password."})
-                return
+                return next(false)
             }
-            next({succes: "Successfully logged in."})
+            next(true)
         });
     },
-    register: function(user, pass, cpass, next) {
-        user = user.trim()
-        pass = pass.trim()
-        cpass = cpass.trim()
-
-        if(pass != cpass){
-            next({error: "Passwords don't match."})
-            return
-        }
-
-        if(pass.length < 6){
-            next({error: "The password is too short."})
-            return
-        }
-
-        if(user.length < 6){
-            next({error: "Username is too short."})
-            return
-        }
-
+    user_exists: function(user, next) {
         db.all("SELECT id, username FROM users WHERE username = ? LIMIT 1", [user.substr(0, 32)], (err, rows) => {
             if(err){
                 console.log("Error querying db:", err.message)
-                return next({error: "Error querying database."})
+                return next(true)
             }
 
             if(rows.length > 0) {
-                next({error: "There is already an user using this username."})
-                return
+                return next(true)
             }
 
-            var pass_hash = crypto.createHmac('sha256', secret_key).update(pass).digest('hex');
-
-            db.run("INSERT INTO users(username, password) VALUES(?, ?)", [user, pass_hash], function(err, done){
-                if(err){
-                    console.log("Error querying db:", err.message)
-                    return next({error: "Error querying database."})
-                }
-                next({success: "Successfuly registered."})
-            })
+            next(false)
         });
+    },
+    register: function(user, pass, next) {
+        user = user.trim()
+        pass = pass.trim()
+
+        var pass_hash = crypto.createHmac('sha256', secret_key).update(pass).digest('hex');
+
+        db.run("INSERT INTO users(username, password) VALUES(?, ?)", [user, pass_hash], function(err, done){
+            if(err){
+                console.log("Error querying db:", err.message)
+                return next(false)
+            }
+
+            next(true)
+        })
     }
 }
 
