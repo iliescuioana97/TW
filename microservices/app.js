@@ -12,12 +12,12 @@ var run = function(argv) {
     var service_name = argv[2]
     var port = parseInt(argv[3])
 
-    if(!fs.existsSync(services_path + service_name + '/' + service_name + '.js')){
+    if(!fs.existsSync(services_path + service_name + '/main.js')){
         console.log(`Error: Cannot find any service with this name (${service_name}).`)
         process.exit()
     }
 
-    var mod = require(services_path + service_name + '/' + service_name)
+    var mod = require(services_path + service_name + '/main')
 
     try {
         console.log(`Starting service: ${service_name}:${port}`)
