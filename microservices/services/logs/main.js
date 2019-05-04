@@ -11,9 +11,15 @@ var req = function(req, res) {
         'Access-Control-Allow-Origin': '*',
     })
 
-    fs.readFile('/var/log/alternatives.log', function(err, data) {
-        console.log(data)
-    });
+    var lista = document.querySelectorAll("#view-logs-container .left-file-menu .log-btn")
+
+    for (log in lista){
+        var log_path = log.innerText
+        console.log(log_path)
+        fs.readFile(log_path, "UTF-8",  function(err, data) {
+            console.log(data)
+        });
+    }
 }
 
 module.exports = {
