@@ -29,6 +29,15 @@ var req = function(req, res) {
                 console.log( 'PID: %s, COMMAND: %s, ARGUMENTS: %s', process.pid, process.command, process.arguments );
             }
         });
+
+        console.log(resultList);
+
+        // res.end(JSON.stringify({
+        //     memory: os.totalmem() - os.freemem(),
+        //     file_descriptors: fd_count,
+        //     ram_usage: (1 - os.freemem() / os.totalmem()),
+        //     cpu_usage: cpu
+        // }));
     });
 }
 
