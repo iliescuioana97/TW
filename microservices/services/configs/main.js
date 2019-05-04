@@ -31,7 +31,7 @@ var req = function(req, res) {
           exec(command_static, (err, stdout, stderr) => {
               services_static = stdout;
 
-              services_all = services_enabled + "\n" + services_disabled + "\n" + services_static
+              services_all = services_enabled + services_disabled + services_static
               res.end(JSON.stringify(
                   {
                       'all': services_all,
