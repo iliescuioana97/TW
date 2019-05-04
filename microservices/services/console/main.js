@@ -16,15 +16,11 @@ var req = function(req, res) {
     if (command.trim().slice(0, 2) == 'cd') {
         try {
             var tptnew = command.trim().slice(3).trim()
-            if(tptnew.length == 0){
-                tptnew = '~'
-            }
         	process.chdir(tptnew)
-
         }
         catch(e){
             return res.end(JSON.stringify({
-                result: e.message,
+                result: e.message + '\n',
                 path: path
             }))
         }
@@ -39,7 +35,7 @@ var req = function(req, res) {
     	exec(command, (error, stdout, stderr) => {
             if(error){
         		return res.end(JSON.stringify({
-                	result: error.message,
+                	result: error.message + '\n',
                 	path: path
             	}))
             }
