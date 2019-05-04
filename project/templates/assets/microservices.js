@@ -151,15 +151,24 @@ var handler_processes = function(){
     updater()
 }
 
+<<<<<<< HEAD
 var handler_configs = function(){
     var dummyContent = {}
 
     var output = document.querySelectorAll("#view-config-container textarea")[0]
     document.querySelectorAll("#view-config-container a.log-btn").forEach(x => x.onclick = e => {
+=======
+var handle_logs = function() {
+
+    var output = document.querySelectorAll("#view-logs-container textarea")[0]
+
+    document.querySelectorAll("#view-logs-container a.log-btn").forEach(x => x.onclick = e => {
+>>>>>>> b92c7bf7e7b2334eb5059aa176cdc7dbe6989252
         e.preventDefault();
 
         var log_file = e.target.getAttribute("data-log")
 
+<<<<<<< HEAD
         document.querySelectorAll("#view-config-container a.log-btn").forEach(x => x.classList.remove("active"))
         e.target.classList.add("active")
         output.innerHTML = dummyContent[log_file]
@@ -174,6 +183,16 @@ var handler_configs = function(){
 
     setInterval(updater, 1000)
     updater()
+=======
+        document.querySelectorAll("#view-logs-container a.log-btn").forEach(x => x.classList.remove("active"))
+        e.target.classList.add("active")
+
+        msv_get('logs_viewer', {log: log_file}, function(data) {
+            output.innerHTML = data.log_data
+        })
+
+    })
+>>>>>>> b92c7bf7e7b2334eb5059aa176cdc7dbe6989252
 }
 
 

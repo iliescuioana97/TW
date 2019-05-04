@@ -1,7 +1,4 @@
 var url = require('url');
-var fs = require('fs');
-var os = require('os');
-var osu = require('os-utils');
 var psList = require("ps-list")
 
 var init = function(port_no){
