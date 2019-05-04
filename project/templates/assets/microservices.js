@@ -150,6 +150,24 @@ var handler_processes = function(){
     updater()
 }
 
+var handle_logs = function() {
+
+    var output = document.querySelectorAll("#view-logs-container textarea")[0]
+
+    document.querySelectorAll("#view-logs-container a.log-btn").forEach(x => x.onclick = e => {
+        e.preventDefault();
+
+        var log_file = e.target.getAttribute("data-log")
+
+        document.querySelectorAll("#view-logs-container a.log-btn").forEach(x => x.classList.remove("active"))
+        e.target.classList.add("active")
+
+        msv_get('logs_viewer', {log: log_file}, function(data) {
+            output.innerHTML = data.log_data
+        })
+
+    })
+}
 
 
 // handler_home()
