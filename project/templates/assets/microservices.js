@@ -1,8 +1,9 @@
-var host = '192.168.226.130'
+var host = 'localhost'
 
 var msv_mapping = {
     'stats': 8001,
     'fs': 8003,
+    'console': 8005,
     'processes': 8007,
 }
 
@@ -149,6 +150,12 @@ var handler_processes = function(){
     setInterval(updater, 1000)
     updater()
 }
+
+// var handler_console = function(){
+//     msv_get('console', {command: 'ls -al'}, function(data){
+//         console.log(data)
+//     })
+// }
 
 
 
