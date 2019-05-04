@@ -3,7 +3,6 @@ var host = 'localhost'
 var msv_mapping = {
     'stats': 8001,
     'fs': 8003,
-    'console': 8005,
     'processes': 8007,
 }
 
@@ -151,14 +150,26 @@ var handler_processes = function(){
     updater()
 }
 
-// var handler_console = function(){
-//     msv_get('console', {command: 'ls -al'}, function(data){
-//         console.log(data)
-//     })
-// }
+var handle_logs = function() {
+
+    var output = document.querySelectorAll("#view-logs-container textarea")[0]
+
+    document.querySelectorAll("#view-logs-container a.log-btn").forEach(x => x.onclick = e => {
+        e.preventDefault();
+
+        var log_file = e.target.getAttribute("data-log")
+
+        document.querySelectorAll("#view-logs-container a.log-btn").forEach(x => x.classList.remove("active"))
+        e.target.classList.add("active")
+
+        msv_get('logs_viewer', {log: log_file}, function(data) {
+            output.innerHTML = data.log_data
+        })
+
+    })
+}
 
 
-
-handler_home()
+// handler_home()
 handler_processes()
 handler_fs()
