@@ -1,4 +1,4 @@
-var host = 'localhost'
+var host = '192.168.226.130'
 
 var msv_mapping = {
     'stats': 8001,
@@ -152,6 +152,6 @@ var handler_processes = function(){
 
 
 
-// handler_home()
+handler_home()
 handler_processes()
 handler_fs()
