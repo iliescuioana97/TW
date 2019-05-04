@@ -2,7 +2,10 @@ var host = 'localhost'
 
 var msv_mapping = {
     'stats': 8001,
+    'users': 8002,
     'fs': 8003,
+    'logs': 8004,
+    'console': 8005,
     'configs': 8006,
     'processes': 8007,
 }
@@ -196,10 +199,59 @@ var handler_configs = function(){
     updater()
 }
 
+var handler_console = function(){
+    console.log(3)
+    var elOut = document.querySelectorAll("#console_terminal pre")[0]
+    var elIn = document.querySelectorAll("#console_terminal input")[0]
+    var elForm = document.querySelectorAll("#console_terminal form")[0]
+        console.log(5)
+
+    elForm.onsubmit = function(){
+        console.log(6)
+        var command = elIn.value.trim();
+
+        msv_get('console', {'command': command}, function(data){
+            elIn.value = ""
+
+            elOut.append(data['path'])
+            elOut.append(` > ${command}\n`)
+
+            elOut.append(data['result'])
+
+            elOut.append('\n')
+
+            elOut.scrollTop = elOut.scrollHeight;
+        })
+
+        return false
+    }
+
+}
 
 
+var ready = function() {
+    console.log(1)
+    if(document.querySelectorAll("#console_terminal").length){
+        console.log(2)
+        handler_console();
+    }
+    if(document.querySelectorAll("#view-logs-container").length){
+        handler_logs()
+    }
+    if(document.querySelectorAll("#view-config-container").length){
+        handler_configs()
+    }
+    if(document.querySelectorAll("#main-file-manager").length){
+        handler_fs()
+    }
+    if(document.querySelectorAll(".processes-table").length){
+        handler_processes()
+    }
+    if(document.querySelectorAll("[data-msv=ram_mem]").length){
+        handler_home()
+    }
+}
 
-handler_home()
-handler_processes()
-handler_fs()
-handler_configs()
+document.addEventListener("DOMContentLoaded", function(event) {
+    ready()
+});
