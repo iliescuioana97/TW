@@ -55,9 +55,6 @@ var handler_home = function(){
 
 }
 
-<<<<<<< HEAD
-
-
 
 var handler_fs = function(){
     handleFileManagerFunctions()
@@ -116,10 +113,6 @@ var handleFileManagerFunctions = function() {
     })
 }
 
-
-handler_home()
-handler_fs()
-=======
 var handler_processes = function(){
     var updater = _ => {
         msv_get('processes', {}, function(data) {
@@ -161,4 +154,4 @@ var handler_processes = function(){
 
 // handler_home()
 handler_processes()
->>>>>>> 62f101ae5a649b95a50cb5288483e33c01d9945b
+handler_fs()
