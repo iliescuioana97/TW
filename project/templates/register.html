@@ -37,7 +37,10 @@
                                 <input class="inside_group" type="password" name="cpassword" placeholder="Confirm Password" required>
                             </div>
                             {{#error}} <div class="alert txt error">{{error}}</div> {{/error}}
-                            {{#success}} <div class="alert txt success">{{success}}</div> {{/success}}
+                            {{#success}}
+                                <div class="alert txt success">{{success}}</div>
+                                <script>setTimeout(_ => window.location.href = '/login', 1500)</script>
+                            {{/success}}
                             <input type="submit" value="Register">
                     </form>
                 </div>

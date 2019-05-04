@@ -11,19 +11,12 @@ var req = function(req, res) {
         'Access-Control-Allow-Origin': '*',
     })
 
-    // var lista = document.querySelectorAll("#view-logs-container .left-file-menu .log-btn")
-
     var log_path = req.body.log;
-
-    // for (log in lista){
-    //     var log_path = log.innerText
-    //     console.log(log_path)
-        fs.readFile(log_path, "UTF-8",  function(err, data) {
-            res.end(JSON.stringify({
-                log_data: data
-            }))
-        });
-    // }
+    fs.readFile(log_path, "UTF-8",  function(err, data) {
+        res.end(JSON.stringify({
+            log_data: data
+        }))
+    });
 }
 
 module.exports = {
