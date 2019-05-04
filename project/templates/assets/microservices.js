@@ -3,6 +3,7 @@ var host = 'localhost'
 var msv_mapping = {
     'stats': 8001,
     'fs': 8003,
+    'configs': 8006,
     'processes': 8007,
 }
 
@@ -150,8 +151,33 @@ var handler_processes = function(){
     updater()
 }
 
+var handler_configs = function(){
+    var dummyContent = {}
+
+    var output = document.querySelectorAll("#view-config-container textarea")[0]
+    document.querySelectorAll("#view-config-container a.log-btn").forEach(x => x.onclick = e => {
+        e.preventDefault();
+
+        var log_file = e.target.getAttribute("data-log")
+
+        document.querySelectorAll("#view-config-container a.log-btn").forEach(x => x.classList.remove("active"))
+        e.target.classList.add("active")
+        output.innerHTML = dummyContent[log_file]
+
+    })
+
+    var updater = _ => {
+        msv_get('configs', {}, function(data) {
+            dummyContent = data
+        })
+    }
+
+    setInterval(updater, 1000)
+    updater()
+}
 
 
-// handler_home()
+handler_home()
 handler_processes()
 handler_fs()
+handler_configs()
