@@ -15,7 +15,7 @@ var req = function(req, res) {
         'Access-Control-Allow-Origin': '*',
     })
 
-    osu.cpuUsage(function(cpu) {
+    osu.cpuUsage(cpu => {
         fs.readdir('/dev/fd/', function(err, files){
             if(err) fd_count = 0
             else fd_count = files.length
