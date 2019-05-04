@@ -14,8 +14,12 @@ var req = function(req, res) {
     var command = req.body.command
     
     if (command.trim().slice(0, 2) == 'cd') {
-    	process.chdir(command.trim().slice(2))
+    	process.chdir(command.trim().slice(3).trim())
     	path = process.cwd();
+        res.end(JSON.stringify({
+            result: 'Changed directory to ' + path,
+            path: path
+        }))
     }
     else {
     	exec(command, (error, stdout, stderr) => {
