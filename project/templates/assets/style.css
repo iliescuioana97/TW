@@ -775,30 +775,35 @@ h3.title {
 .processes-table tr th:nth-child(1),
 .processes-table tr td:nth-child(1){
     width: 8%;
+    text-align: center;
 }
 .processes-table tr th:nth-child(2),
 .processes-table tr td:nth-child(2){
-    width: 6%;
+    width: 8%;
+    text-align: center;
 }
 .processes-table tr th:nth-child(3),
 .processes-table tr td:nth-child(3){
-    width: 6%;
+    width: 16%;
 }
 .processes-table tr th:nth-child(4),
 .processes-table tr td:nth-child(4){
     width: 6%;
+    text-align: center;
 }
 .processes-table tr th:nth-child(5),
 .processes-table tr td:nth-child(5){
     width: 6%;
+    text-align: center;
 }
 .processes-table tr th:nth-child(6),
 .processes-table tr td:nth-child(6){
-    width: 9%;
+    width: 50%;
 }
 .processes-table tr th:nth-child(7),
 .processes-table tr td:nth-child(7){
-    width: 58%;
+    width: 6%;
+    text-align: center;
 }
 
 

@@ -55,6 +55,7 @@ var handler_home = function(){
 
 }
 
+<<<<<<< HEAD
 
 
 
@@ -118,3 +119,46 @@ var handleFileManagerFunctions = function() {
 
 handler_home()
 handler_fs()
+=======
+var handler_processes = function(){
+    var updater = _ => {
+        msv_get('processes', {}, function(data) {
+            // console.log(data)
+            var table_tbody = document.querySelector(".processes-table tbody")
+            var content = ""
+
+            for (var proc of data){
+                var pid = proc.pid
+                var name = proc.name
+                var cmd = proc.cmd
+                var ppid = proc.ppid
+                var uid = proc.uid
+                var memory = proc.memory
+                var cpu = proc.cpu
+
+                content = content + '<tr>' +
+                '<td>' + pid + '</td>' +
+                '<td>' + ppid + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + cpu + '</td>' +
+                '<td>' + memory + '</td>'+
+                '<td>' + cmd + '</td>'+
+                '<td>' + uid + '</td></tr>'
+
+                // console.log(content)
+                table_tbody.innerHTML = content
+
+            }
+
+        })
+    }
+
+    setInterval(updater, 1000)
+    updater()
+}
+
+
+
+// handler_home()
+handler_processes()
+>>>>>>> 62f101ae5a649b95a50cb5288483e33c01d9945b

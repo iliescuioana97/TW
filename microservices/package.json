@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "os-utils": "0.0.14",
-    "ps-node": "^0.1.6"
+    "ps-list": "^6.3.0"
   }
 }
