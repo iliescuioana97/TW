@@ -17,8 +17,26 @@ var req = function(req, res) {
     var path = req.body.path ? req.body.path : '/'
 
     fs.readdir(path, function(err, files){
+        if (err){
+            res.end(JSON.stringify({
+                files: [],
+                path: path
+            }))
+            return;
+        }
+
+        var files_types = [];
+
+        for(var f of files){
+            var is_directory = fs.lstatSync(path + '/' + f).isDirectory();
+            files_types.push({
+                name: f,
+                dir: is_directory
+            })
+        }
+
         res.end(JSON.stringify({
-            files: files,
+            files: files_types,
             path: path
         }))
     })

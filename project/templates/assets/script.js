@@ -815,78 +815,78 @@ systemd-tmpfiles-clean.timer
     })
 }
 
-
-var fileManagerLoadDir = function(path = '/') {
-    var dirs = {
-        '/': [
-            {t:'d',n:'.'},
-            {t:'d',n:'..'},
-            {t:'d',n:'etc'},
-            {t:'d',n:'var'},
-            {t:'d',n:'home'},
-            {t:'d',n:'dev'},
-            {t:'d',n:'root'},
-            {t:'f',n:'tmp'},
-        ],
-        '/etc': [
-            {t:'d',n:'.'},
-            {t:'d',n:'..'},
-            {t:'d',n:'dir1'},
-            {t:'f',n:'file1'},
-        ],
-        '/var': [
-            {t:'d',n:'.'},
-            {t:'d',n:'..'},
-            {t:'d',n:'dir1'},
-            {t:'f',n:'file1'},
-        ],
-        '/home': [
-            {t:'d',n:'.'},
-            {t:'d',n:'..'},
-            {t:'d',n:'david.vultur'},
-            {t:'d',n:'ioana.iliescu'},
-            {t:'d',n:'matei.dascalu'},
-            {t:'d',n:'david.vultur'},
-        ],
-    }
-    if(typeof current_dir == "undefined") {
-        current_dir = path;
-    }
-
-    var html_content = '';
-
-    if(!dirs[current_dir]){
-        document.querySelectorAll("#main-file-manager .items")[0].innerHTML = '<a href="#" data-dir=".." class="item"><i class="material-icons">folder</i> ..</a><br>???';
-        return;
-    }
-
-    var files = dirs[current_dir];
-    for(var file of files){
-        var icon = file.t == 'd' ? 'folder' : 'insert_drive_file'
-
-        html_content += `<a href="#" data-dir="${file.n}" class="item"><i class="material-icons">${icon}</i> ${file.n}</a>`
-    }
-
-    document.querySelectorAll("#main-file-manager .path")[0].innerHTML = current_dir;
-    document.querySelectorAll("#main-file-manager .items")[0].innerHTML = html_content;
-}
-
-var handleFileManagerFunctions = function() {
-    document.querySelectorAll("#main-file-manager .items").forEach(x => x.onclick = e => {
-        e.preventDefault();
-        var new_dir = e.target.getAttribute("data-dir")
-        if(new_dir == '.'){
-            // current_dir = current_dir
-        }
-        else if(new_dir == '..') {
-            current_dir = '/'
-        }
-        else {
-            current_dir = current_dir + new_dir
-        }
-        fileManagerLoadDir()
-    })
-}
+// 
+// var fileManagerLoadDir = function(path = '/') {
+//     var dirs = {
+//         '/': [
+//             {t:'d',n:'.'},
+//             {t:'d',n:'..'},
+//             {t:'d',n:'etc'},
+//             {t:'d',n:'var'},
+//             {t:'d',n:'home'},
+//             {t:'d',n:'dev'},
+//             {t:'d',n:'root'},
+//             {t:'f',n:'tmp'},
+//         ],
+//         '/etc': [
+//             {t:'d',n:'.'},
+//             {t:'d',n:'..'},
+//             {t:'d',n:'dir1'},
+//             {t:'f',n:'file1'},
+//         ],
+//         '/var': [
+//             {t:'d',n:'.'},
+//             {t:'d',n:'..'},
+//             {t:'d',n:'dir1'},
+//             {t:'f',n:'file1'},
+//         ],
+//         '/home': [
+//             {t:'d',n:'.'},
+//             {t:'d',n:'..'},
+//             {t:'d',n:'david.vultur'},
+//             {t:'d',n:'ioana.iliescu'},
+//             {t:'d',n:'matei.dascalu'},
+//             {t:'d',n:'david.vultur'},
+//         ],
+//     }
+//     if(typeof current_dir == "undefined") {
+//         current_dir = path;
+//     }
+//
+//     var html_content = '';
+//
+//     if(!dirs[current_dir]){
+//         document.querySelectorAll("#main-file-manager .items")[0].innerHTML = '<a href="#" data-dir=".." class="item"><i class="material-icons">folder</i> ..</a><br>???';
+//         return;
+//     }
+//
+//     var files = dirs[current_dir];
+//     for(var file of files){
+//         var icon = file.t == 'd' ? 'folder' : 'insert_drive_file'
+//
+//         html_content += `<a href="#" data-dir="${file.n}" class="item"><i class="material-icons">${icon}</i> ${file.n}</a>`
+//     }
+//
+//     document.querySelectorAll("#main-file-manager .path")[0].innerHTML = current_dir;
+//     document.querySelectorAll("#main-file-manager .items")[0].innerHTML = html_content;
+// }
+//
+// var handleFileManagerFunctions = function() {
+//     document.querySelectorAll("#main-file-manager .items").forEach(x => x.onclick = e => {
+//         e.preventDefault();
+//         var new_dir = e.target.getAttribute("data-dir")
+//         if(new_dir == '.'){
+//             // current_dir = current_dir
+//         }
+//         else if(new_dir == '..') {
+//             current_dir = '/'
+//         }
+//         else {
+//             current_dir = current_dir + new_dir
+//         }
+//         fileManagerLoadDir()
+//     })
+// }
 
 var registerModal = function() {
     document.querySelector("body").insertAdjacentHTML("afterBegin", '<div class="modal"><div class="modal-overlay"></div><div class="modal-container animate-bounce"></div></div>')

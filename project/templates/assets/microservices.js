@@ -2,6 +2,7 @@ var host = 'localhost'
 
 var msv_mapping = {
     'stats': 8001,
+    'fs': 8003,
     'processes': 8007,
 }
 
@@ -42,7 +43,6 @@ var handler_home = function(){
 
     var updater = _ => {
         msv_get('stats', {a:'2'}, function(data) {
-            console.log(data)
             mem.innerHTML = (parseInt(data.memory / 1024 / 1024 / 1024 * 100) / 100).toString() + ' GB'
             fh_count.innerHTML = data.file_descriptors
             cpu_usage.innerHTML = parseInt(data.cpu_usage * 100).toString() + '%'
@@ -55,4 +55,66 @@ var handler_home = function(){
 
 }
 
+
+
+
+var handler_fs = function(){
+    handleFileManagerFunctions()
+    fileManagerLoadDir()
+}
+
+var fileManagerLoadDir = function(path = '/') {
+    if(typeof current_dir == "undefined") {
+        current_dir = path;
+    }
+
+    var html_content = '';
+
+    html_content += `<a href="#" data-dir=".." class="item clickable"><i class="material-icons">folder</i> ..</a>`
+
+    msv_get('fs', {path: current_dir}, function(data) {
+        var files = data.files;
+        for(var item of files){
+            var file = item.name
+            var is_directory = item.dir
+            var icon = is_directory ? 'folder' : 'insert_drive_file'
+
+            html_content += `<a href="#" data-dir="${file}" class="item ${is_directory ? 'clickable' : ''}"><i class="material-icons">${icon}</i> ${file}</a>`
+        }
+
+        document.querySelectorAll("#main-file-manager .path")[0].innerHTML = current_dir;
+        document.querySelectorAll("#main-file-manager .items")[0].innerHTML = html_content;
+
+        current_dir = data.path
+
+    })
+}
+
+var handleFileManagerFunctions = function() {
+    document.querySelectorAll("#main-file-manager .items").forEach(x => x.onclick = e => {
+        e.preventDefault();
+        var new_dir = e.target.getAttribute("data-dir")
+        if(e.target.classList.value.indexOf('clickable') == -1){
+            return;
+        }
+
+        if(new_dir == '.'){
+            // current_dir = current_dir
+        }
+        else if(new_dir == '..') {
+            current_dir = current_dir.replace(/\\/g,'/').replace(/\/[^\/]*$/, '');
+            if(current_dir.length == 0) current_dir = '/'
+        }
+        else {
+            if (current_dir.slice(-1) == '/')
+                current_dir = current_dir + new_dir
+            else
+                current_dir = current_dir + '/' + new_dir
+        }
+        fileManagerLoadDir()
+    })
+}
+
+
 handler_home()
+handler_fs()
