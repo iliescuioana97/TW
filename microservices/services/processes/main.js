@@ -30,7 +30,11 @@ var req = function(req, res) {
             }
         });
     });
+<<<<<<< HEAD
 }
+=======
+})
+>>>>>>> 8a2e625226ab02747aa500fe8f6fbbed1e1bf84e
 
 module.exports = {
     init: init,
