@@ -1,5 +1,5 @@
-var url = require('url');
-var psList = require("ps-list")
+var fs = require('fs');
+
 
 var init = function(port_no){
     // ??
@@ -11,8 +11,8 @@ var req = function(req, res) {
         'Access-Control-Allow-Origin': '*',
     })
 
-    psList().then(function(ps_list){
-        res.end(JSON.stringify(ps_list));
+    fs.readFile('/var/log/alternatives.log', function(err, data) {
+        console.log(data)
     });
 }
 
