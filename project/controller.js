@@ -64,6 +64,20 @@ var parse_body = function(req, next){
     })
 }
 
+var parse_cookies = function(req) {
+    var list = {}
+    var chead = req.headers.cookie;
+
+    if(chead) {
+        chead.split(';').forEach(function( cookie ) {
+            var parts = cookie.split('=');
+            list[parts[0].trim()] = decodeURI(parts.slice(1).join('='));
+        });
+    }
+
+    return list;
+}
+
 
 var ctr = Controller()
 
@@ -184,6 +198,8 @@ ctr.get('/machine/(.*)/docs', (req, res) => {
 
 module.exports = {
     run: function(req, res){
+        req.cookies = parse_cookies(req)
+
         parse_body(req, function(req){
             ctr.run(req, res)
         })
