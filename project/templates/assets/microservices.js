@@ -154,7 +154,6 @@ var handler_processes = function(){
     updater()
 }
 
-
 var handler_logs = function() {
 
     var output = document.querySelectorAll("#view-logs-container textarea")[0]
@@ -210,6 +209,7 @@ var handler_console = function(){
         console.log(6)
         var command = elIn.value.trim();
 
+<<<<<<< HEAD
         msv_get('console', {'command': command}, function(data){
             elIn.value = ""
 
@@ -255,3 +255,9 @@ var ready = function() {
 document.addEventListener("DOMContentLoaded", function(event) {
     ready()
 });
+=======
+handler_home()
+handler_processes()
+handler_fs()
+handler_configs()
+>>>>>>> 3ce21fae7db918cdc045cb91d4bb5a5b048acb97
