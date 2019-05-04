@@ -55,4 +55,44 @@ var handler_home = function(){
 
 }
 
-handler_home()
+var handler_processes = function(){
+    var updater = _ => {
+        msv_get('processes', {}, function(data) {
+            // console.log(data)
+            var table_tbody = document.querySelector(".processes-table tbody")
+            var content = ""
+
+            for (var proc of data){
+                var pid = proc.pid
+                var name = proc.name
+                var cmd = proc.cmd
+                var ppid = proc.ppid
+                var uid = proc.uid
+                var memory = proc.memory
+                var cpu = proc.cpu
+
+                content = content + '<tr>' +
+                '<td>' + pid + '</td>' +
+                '<td>' + ppid + '</td>' +
+                '<td>' + name + '</td>' +
+                '<td>' + cpu + '</td>' +
+                '<td>' + memory + '</td>'+
+                '<td>' + cmd + '</td>'+
+                '<td>' + uid + '</td></tr>'
+
+                // console.log(content)
+                table_tbody.innerHTML = content
+
+            }
+
+        })
+    }
+
+    setInterval(updater, 1000)
+    updater()
+}
+
+
+
+// handler_home()
+handler_processes()

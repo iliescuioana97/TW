@@ -53,150 +53,17 @@
                     <table class="table-main processes-table">
                         <thead>
                             <tr>
-                                <th>User</th>
-                                <th>PID</th>
+                                <th >PID</th>
                                 <th>PPID</th>
+                                <th>Name</th>
                                 <th>CPU</th>
                                 <th>MEM</th>
-                                <th>Time</th>
                                 <th>Command</th>
+                                <th>UID</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr><td>root</td><td>1</td><td>0</td><td>0.1%</td><td>0.4%</td><td>00:00:02</td><td>/sbin/init splash</td></tr>
-                            <tr><td>root</td><td>2</td><td>0</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kthreadd]</td></tr>
-                            <tr><td>root</td><td>4</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/0:0H]</td></tr>
-                            <tr><td>root</td><td>6</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[mm_percpu_wq]</td></tr>
-                            <tr><td>root</td><td>7</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ksoftirqd/0]</td></tr>
-                            <tr><td>root</td><td>8</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[rcu_sched]</td></tr>
-                            <tr><td>root</td><td>9</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[rcu_bh]</td></tr>
-                            <tr><td>root</td><td>10</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[migration/0]</td></tr>
-                            <tr><td>root</td><td>11</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[watchdog/0]</td></tr>
-                            <tr><td>root</td><td>12</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[cpuhp/0]</td></tr>
-                            <tr><td>root</td><td>13</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[cpuhp/1]</td></tr>
-                            <tr><td>root</td><td>14</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[watchdog/1]</td></tr>
-                            <tr><td>root</td><td>15</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[migration/1]</td></tr>
-                            <tr><td>root</td><td>16</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ksoftirqd/1]</td></tr>
-                            <tr><td>root</td><td>18</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/1:0H]</td></tr>
-                            <tr><td>root</td><td>19</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kdevtmpfs]</td></tr>
-                            <tr><td>root</td><td>20</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[netns]</td></tr>
-                            <tr><td>root</td><td>21</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[rcu_tasks_kthre]</td></tr>
-                            <tr><td>root</td><td>22</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kauditd]</td></tr>
-                            <tr><td>root</td><td>23</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:01</td><td>[kworker/0:1]</td></tr>
-                            <tr><td>root</td><td>24</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[khungtaskd]</td></tr>
-                            <tr><td>root</td><td>25</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[oom_reaper]</td></tr>
-                            <tr><td>root</td><td>26</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[writeback]</td></tr>
-                            <tr><td>root</td><td>27</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kcompactd0]</td></tr>
-                            <tr><td>root</td><td>28</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ksmd]</td></tr>
-                            <tr><td>root</td><td>29</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[khugepaged]</td></tr>
-                            <tr><td>root</td><td>30</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[crypto]</td></tr>
-                            <tr><td>root</td><td>31</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kintegrityd]</td></tr>
-                            <tr><td>root</td><td>32</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kblockd]</td></tr>
-                            <tr><td>root</td><td>33</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ata_sff]</td></tr>
-                            <tr><td>root</td><td>34</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[md]</td></tr>
-                            <tr><td>root</td><td>35</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[edac-poller]</td></tr>
-                            <tr><td>root</td><td>36</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[devfreq_wq]</td></tr>
-                            <tr><td>root</td><td>37</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[watchdogd]</td></tr>
-                            <tr><td>root</td><td>41</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kswapd0]</td></tr>
-                            <tr><td>root</td><td>42</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ecryptfs-kthrea]</td></tr>
-                            <tr><td>root</td><td>84</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kthrotld]</td></tr>
-                            <tr><td>root</td><td>85</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[acpi_thermal_pm]</td></tr>
-                            <tr><td>root</td><td>86</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[scsi_eh_0]</td></tr>
-                            <tr><td>root</td><td>87</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[scsi_tmf_0]</td></tr>
-                            <tr><td>root</td><td>88</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[scsi_eh_1]</td></tr>
-                            <tr><td>root</td><td>89</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[scsi_tmf_1]</td></tr>
-                            <tr><td>root</td><td>96</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ipv6_addrconf]</td></tr>
-                            <tr><td>root</td><td>105</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kstrp]</td></tr>
-                            <tr><td>root</td><td>122</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[charger_manager]</td></tr>
-                            <tr><td>root</td><td>127</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/1:2]</td></tr>
-                            <tr><td>root</td><td>172</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[mpt_poll_0]</td></tr>
-                            <tr><td>root</td><td>173</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[mpt/0]</td></tr>
-                            <tr><td>root</td><td>175</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[scsi_eh_2]</td></tr>
-                            <tr><td>root</td><td>176</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[scsi_tmf_2]</td></tr>
-                            <tr><td>root</td><td>177</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ttm_swap]</td></tr>
-                            <tr><td>root</td><td>178</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[irq/16-vmwgfx]</td></tr>
-                            <tr><td>root</td><td>180</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/1:1H]</td></tr>
-                            <tr><td>root</td><td>181</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/0:1H]</td></tr>
-                            <tr><td>root</td><td>201</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[jbd2/sda1-8]</td></tr>
-                            <tr><td>root</td><td>202</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[ext4-rsv-conver]</td></tr>
-                            <tr><td>root</td><td>238</td><td>1</td><td>0.0%</td><td>0.5%</td><td>00:00:00</td><td>/lib/systemd/systemd-journald</td></tr>
-                            <tr><td>root</td><td>252</td><td>1</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/lib/systemd/systemd-udevd</td></tr>
-                            <tr><td>systemd+</td><td>288</td><td>1</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/lib/systemd/systemd-resolved</td></tr>
-                            <tr><td>systemd+</td><td>290</td><td>1</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>/lib/systemd/systemd-timesyncd</td></tr>
-                            <tr><td>root</td><td>340</td><td>1</td><td>0.0%</td><td>0.8%</td><td>00:00:00</td><td>/usr/bin/python3 /usr/bin/networkd-dispatcher</td></tr>
-                            <tr><td>root</td><td>341</td><td>1</td><td>0.0%</td><td>0.4%</td><td>00:00:00</td><td>/usr/sbin/ModemManager</td></tr>
-                            <tr><td>root</td><td>345</td><td>1</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>/usr/sbin/irqbalance --foreground</td></tr>
-                            <tr><td>syslog</td><td>347</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/sbin/rsyslogd -n</td></tr>
-                            <tr><td>root</td><td>348</td><td>1</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>/usr/sbin/acpid</td></tr>
-                            <tr><td>root</td><td>349</td><td>1</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>/usr/sbin/cron -f</td></tr>
-                            <tr><td>root</td><td>350</td><td>1</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/usr/lib/accountsservice/accounts-daemon</td></tr>
-                            <tr><td>avahi</td><td>351</td><td>1</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>avahi-daemon: running [ubuntu.local]</td></tr>
-                            <tr><td>message+</td><td>354</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only</td></tr>
-                            <tr><td>root</td><td>366</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/sbin/wpa_supplicant -u -s -O /run/wpa_supplicant</td></tr>
-                            <tr><td>root</td><td>367</td><td>1</td><td>0.0%</td><td>0.4%</td><td>00:00:00</td><td>/usr/lib/udisks2/udisksd</td></tr>
-                            <tr><td>root</td><td>369</td><td>1</td><td>0.0%</td><td>0.8%</td><td>00:00:00</td><td>/usr/sbin/NetworkManager --no-daemon</td></tr>
-                            <tr><td>root</td><td>370</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/lib/systemd/systemd-logind</td></tr>
-                            <tr><td>avahi</td><td>386</td><td>351</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>avahi-daemon: chroot helper</td></tr>
-                            <tr><td>root</td><td>389</td><td>1</td><td>0.0%</td><td>0.4%</td><td>00:00:00</td><td>/usr/lib/policykit-1/polkitd --no-debug</td></tr>
-                            <tr><td>root</td><td>439</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/u257:0]</td></tr>
-                            <tr><td>root</td><td>441</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/u257:2]</td></tr>
-                            <tr><td>root</td><td>459</td><td>1</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/usr/sbin/lightdm</td></tr>
-                            <tr><td>root</td><td>474</td><td>369</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/dhclient-ens33.pid -lf /var/lib/NetworkManager/dhclient-2ff3af89-c83b-4a6c-888a-ac2a91a4a758-ens33.lease -cf /var/lib/NetworkManager/dhclient-ens33.conf ens33</td></tr>
-                            <tr><td>root</td><td>486</td><td>459</td><td>2.3%</td><td>4.9%</td><td>00:00:36</td><td>/usr/lib/xorg/Xorg -core :0 -seat seat0 -auth /var/run/lightdm/root/:0 -nolisten tcp vt7 -novtswitch</td></tr>
-                            <tr><td>root</td><td>496</td><td>1</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>/sbin/agetty -o -p -- \u --noclear tty1 linux</td></tr>
-                            <tr><td>root</td><td>515</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/bluetooth/bluetoothd</td></tr>
-                            <tr><td>whoopsie</td><td>600</td><td>1</td><td>0.0%</td><td>0.5%</td><td>00:00:00</td><td>/usr/bin/whoopsie -f</td></tr>
-                            <tr><td>kernoops</td><td>607</td><td>1</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>/usr/sbin/kerneloops --test</td></tr>
-                            <tr><td>kernoops</td><td>611</td><td>1</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>/usr/sbin/kerneloops</td></tr>
-                            <tr><td>root</td><td>741</td><td>459</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>lightdm --session-child 12 19</td></tr>
-                            <tr><td>artur99</td><td>948</td><td>1</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/lib/systemd/systemd --user</td></tr>
-                            <tr><td>artur99</td><td>949</td><td>948</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>(sd-pam)</td></tr>
-                            <tr><td>artur99</td><td>962</td><td>741</td><td>0.0%</td><td>0.6%</td><td>00:00:00</td><td>/usr/bin/lxsession -s Lubuntu -e LXDE</td></tr>
-                            <tr><td>artur99</td><td>1004</td><td>1</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>/usr/bin/dbus-launch --exit-with-session --sh-syntax</td></tr>
-                            <tr><td>artur99</td><td>1005</td><td>1</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>/usr/bin/dbus-daemon --syslog --fork --print-pid 5 --print-address 7 --session</td></tr>
-                            <tr><td>artur99</td><td>1020</td><td>962</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>/usr/bin/ssh-agent /usr/bin/im-launch /usr/bin/lxsession -s Lubuntu -e LXDE</td></tr>
-                            <tr><td>artur99</td><td>1032</td><td>1</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfsd</td></tr>
-                            <tr><td>artur99</td><td>1037</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfsd-fuse /run/user/1000/gvfs -f -o big_writes</td></tr>
-                            <tr><td>artur99</td><td>1047</td><td>962</td><td>0.1%</td><td>1.0%</td><td>00:00:01</td><td>openbox --config-file /home/artur99/.config/openbox/lubuntu-rc.xml</td></tr>
-                            <tr><td>artur99</td><td>1051</td><td>962</td><td>0.2%</td><td>1.5%</td><td>00:00:03</td><td>lxpanel --profile Lubuntu</td></tr>
-                            <tr><td>artur99</td><td>1054</td><td>962</td><td>0.1%</td><td>2.4%</td><td>00:00:01</td><td>pcmanfm --desktop --profile lubuntu</td></tr>
-                            <tr><td>artur99</td><td>1055</td><td>962</td><td>0.0%</td><td>0.5%</td><td>00:00:00</td><td>lxpolkit</td></tr>
-                            <tr><td>artur99</td><td>1061</td><td>1</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>/usr/bin/ssh-agent -s</td></tr>
-                            <tr><td>artur99</td><td>1065</td><td>1</td><td>0.0%</td><td>1.1%</td><td>00:00:00</td><td>update-notifier</td></tr>
-                            <tr><td>artur99</td><td>1068</td><td>1</td><td>0.0%</td><td>1.2%</td><td>00:00:00</td><td>xfce4-power-manager</td></tr>
-                            <tr><td>artur99</td><td>1072</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/x86_64-linux-gnu/xfce4/xfconf/xfconfd</td></tr>
-                            <tr><td>artur99</td><td>1078</td><td>1</td><td>0.0%</td><td>0.7%</td><td>00:00:00</td><td>/usr/lib/x86_64-linux-gnu/xfce4/notifyd/xfce4-notifyd</td></tr>
-                            <tr><td>artur99</td><td>1085</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/dconf/dconf-service</td></tr>
-                            <tr><td>artur99</td><td>1086</td><td>1</td><td>0.0%</td><td>1.6%</td><td>00:00:00</td><td>nm-applet</td></tr>
-                            <tr><td>artur99</td><td>1096</td><td>1</td><td>0.0%</td><td>0.9%</td><td>00:00:00</td><td>light-locker</td></tr>
-                            <tr><td>root</td><td>1112</td><td>1</td><td>0.0%</td><td>0.4%</td><td>00:00:00</td><td>/usr/lib/upower/upowerd</td></tr>
-                            <tr><td>artur99</td><td>1115</td><td>1</td><td>0.0%</td><td>0.5%</td><td>00:00:01</td><td>/usr/bin/pulseaudio --start --log-target=syslog</td></tr>
-                            <tr><td>artur99</td><td>1146</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/menu-cache/menu-cached /run/user/1000/menu-cached-:0</td></tr>
-                            <tr><td>artur99</td><td>1152</td><td>1</td><td>0.0%</td><td>0.4%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfs-udisks2-volume-monitor</td></tr>
-                            <tr><td>artur99</td><td>1157</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfs-goa-volume-monitor</td></tr>
-                            <tr><td>artur99</td><td>1166</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfs-gphoto2-volume-monitor</td></tr>
-                            <tr><td>artur99</td><td>1180</td><td>1</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfs-mtp-volume-monitor</td></tr>
-                            <tr><td>artur99</td><td>1189</td><td>1</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfs-afc-volume-monitor</td></tr>
-                            <tr><td>artur99</td><td>1210</td><td>1032</td><td>0.0%</td><td>0.3%</td><td>00:00:00</td><td>/usr/lib/gvfs/gvfsd-trash --spawner :1.2 /org/gtk/gvfs/exec_spaw/0</td></tr>
-                            <tr><td>artur99</td><td>1212</td><td>1</td><td>0.0%</td><td>0.6%</td><td>00:00:00</td><td>/usr/lib/indicator-sound-gtk2/indicator-sound-service</td></tr>
-                            <tr><td>artur99</td><td>1214</td><td>1</td><td>0.0%</td><td>0.4%</td><td>00:00:00</td><td>/usr/lib/x86_64-linux-gnu/indicator-application-service</td></tr>
-                            <tr><td>root</td><td>1263</td><td>1</td><td>0.0%</td><td>0.6%</td><td>00:00:00</td><td>/usr/lib/packagekit/packagekitd</td></tr>
-                            <tr><td>artur99</td><td>1398</td><td>1051</td><td>1.1%</td><td>1.9%</td><td>00:00:17</td><td>lxterminal</td></tr>
-                            <tr><td>artur99</td><td>1401</td><td>1398</td><td>0.0%</td><td>0.2%</td><td>00:00:00</td><td>bash</td></tr>
-                            <tr><td>artur99</td><td>1510</td><td>1051</td><td>6.1%</td><td>16.5%</td><td>00:01:20</td><td>/usr/lib/firefox/firefox</td></tr>
-                            <tr><td>artur99</td><td>1565</td><td>1510</td><td>7.5%</td><td>11.5%</td><td>00:01:38</td><td>/usr/lib/firefox/firefox -contentproc -childID 1 -isForBrowser -intPrefs 6:50|7:-1|19:0|34:1000|42:20|43:5|44:10|51:0|57:128|58:10000|63:0|65:400|66:1|67:0|68:0|69:100|74:0|75:120|76:120|159:2|160:1|164:60|165:30|166:512000|175:5000|177:6|191:8192|192:524288</td></tr>
-                            <tr><td>artur99</td><td>1603</td><td>1510</td><td>0.1%</td><td>7.3%</td><td>00:00:01</td><td>/usr/lib/firefox/firefox -contentproc -childID 2 -isForBrowser -intPrefs 6:50|7:-1|19:0|34:1000|42:20|43:5|44:10|51:0|57:128|58:10000|63:0|65:400|66:1|67:0|68:0|69:100|74:0|75:120|76:120|159:2|160:1|164:60|165:30|166:512000|175:5000|177:6|191:8192|192:524288</td></tr>
-                            <tr><td>root</td><td>1947</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/u256:1]</td></tr>
-                            <tr><td>artur99</td><td>1953</td><td>1510</td><td>0.0%</td><td>4.0%</td><td>00:00:00</td><td>/usr/lib/firefox/firefox -contentproc -childID 4 -isForBrowser -intPrefs 6:50|7:-1|19:0|34:1000|42:20|43:5|44:10|51:0|57:128|58:10000|63:0|65:400|66:1|67:0|68:0|69:100|74:0|75:120|76:120|159:2|160:1|164:60|165:30|166:512000|175:5000|177:6|191:8192|192:524288</td></tr>
-                            <tr><td>root</td><td>2128</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/u256:2]</td></tr>
-                            <tr><td>root</td><td>2129</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/0:2]</td></tr>
-                            <tr><td>root</td><td>2134</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/1:0]</td></tr>
-                            <tr><td>artur99</td><td>2162</td><td>1398</td><td>0.1%</td><td>0.2%</td><td>00:00:00</td><td>bash</td></tr>
-                            <tr><td>root</td><td>2220</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/u256:0]</td></tr>
-                            <tr><td>root</td><td>2221</td><td>2</td><td>0.0%</td><td>0.0%</td><td>00:00:00</td><td>[kworker/0:0]</td></tr>
-                            <tr><td>artur99</td><td>2257</td><td>2162</td><td>0.0%</td><td>0.1%</td><td>00:00:00</td><td>ps -eo user,pid,ppid,%cpu,%mem,time,command</td></tr>
-
                         </tbody>
 
                     </table>
@@ -208,5 +75,7 @@
     </div>
 
     <script src="/assets/script.js"></script>
+    <script src="/assets/microservices.js"></script>
+
 </body>
 </html>
