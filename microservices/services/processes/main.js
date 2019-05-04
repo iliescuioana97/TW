@@ -30,10 +30,7 @@ var req = function(req, res) {
             }
         });
     });
-
-        })
-    })
-}
+})
 
 module.exports = {
     init: init,
