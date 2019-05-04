@@ -1,6 +1,7 @@
 const fs = require("fs")
 const http = require('http')
-var url = require('url')
+const url = require('url')
+const qs = require('querystring')
 
 
 var run = function(argv) {
@@ -26,13 +27,28 @@ var run = function(argv) {
         mod.init()
 
         http.createServer(function(req, res) {
-            mod.req(req, res)
+            parse_body(req, function(req){
+                mod.req(req, res)
+            })
         }).listen(port);
 
     }
     catch(e){
         console.log(`Error running service: ${e.message}.`)
     }
+}
+
+var parse_body = function(req, next){
+    var body = '';
+
+    req.on('data', function (data) {
+        body += data;
+        if (body.length > 10 * 1024) req.connection.destroy();
+    })
+    req.on('end', function () {
+        req.body = JSON.parse(JSON.stringify(qs.parse(body)))
+        next(req)
+    })
 }
 
 run(process.argv)
