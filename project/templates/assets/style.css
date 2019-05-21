@@ -866,3 +866,7 @@ h3.title {
     font-family: monospace;
     background: #f9f9f9;
 }
+
+p.center {
+    text-align: center;
+}

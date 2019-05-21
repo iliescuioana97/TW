@@ -11,8 +11,14 @@ var init = function(port_no, secret_c){
 var req = function(req, res, auth) {
     // No auth necessary here.
 
-    var username = req.body.username.trim()
-    var password = req.body.password.trim()
+    if(!req.body.username || !req.body.password) {
+        return res.end(JSON.stringify({
+            error: "Invalid username or password."
+        }))
+    }
+
+    var username = req.body.username
+    var password = req.body.password
 
     pam.authenticate(username, password, (err) => {
         if(err) {
@@ -23,11 +29,6 @@ var req = function(req, res, auth) {
             token: jwt.sign({on: 1, username: username}, secret)
         }))
     })
-
-    res.end(JSON.stringify({
-        result: 'Changed directory to ' + path,
-        path: path
-    }))
 
 }
 

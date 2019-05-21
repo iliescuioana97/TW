@@ -1,6 +1,8 @@
 var host = '10.211.55.7'
+var auth_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvbiI6MSwidXNlcm5hbWUiOiJwYXJhbGxlbHMiLCJpYXQiOjE1NTg0MzUxMTN9.Ib23UsD33HLvFrYR45vwwB6DbvOxSNLvu4BlNdhCtP4';
 
 var msv_mapping = {
+    'auth': 8000,
     'stats': 8001,
     'users': 8002,
     'fs': 8003,
@@ -9,10 +11,30 @@ var msv_mapping = {
     'configs': 8006,
     'processes': 8007,
 }
+var access_ok = true
 
-var msv_get = function(service_name, data, next) {
+var msv_get = function(service_name, data, next, force_host = null) {
+    if(!access_ok) return
+
     var http = new XMLHttpRequest();
+    var host;
+    if(force_host) {
+        host = force_host;
+    }
+    else {
+        if(typeof machine_id == 'undefined') machine_id = 0;
+        var machine_data = JSON.parse(localStorage.getItem(machine_id))
+        if(!machine_data) {
+            access_ok = false
+            alert("You don't have access to this machine.")
+            // window.location.href = '/machines'
+            return;
+        }
+        host = machine_data.machine_ip
+    }
     var url = 'http://' + host + ':' + msv_mapping[service_name] + '/';
+
+    data.token = auth_token;
 
     var params = [];
     for(var k in data){
@@ -23,6 +45,10 @@ var msv_get = function(service_name, data, next) {
     http.open('POST', url, true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
+    if(service_name == 'auth') {
+        http.timeout = 5 * 1000;
+    }
+
     http.onreadystatechange = function() {
         if(http.readyState == 4 && http.status == 200) {
             var resp = http.responseText;
@@ -32,9 +58,34 @@ var msv_get = function(service_name, data, next) {
             catch(e){}
             next(resp)
         }
+        else if(http.readyState == 4) {
+            next({error: "Connection failed."})
+        }
     }
     http.send(params);
 }
+
+// var requesting = false
+// var msv_get = function(service_name, data, next) {
+//     if(requesting){
+//         setTimeout(_ => {
+//             msv_get(service_name, data, next);
+//         }, 500)
+//         return
+//     }
+//
+//     if(!auth_token) {
+//         requesting = true
+//         msv_get_nat('auth', {username:'parallels', password:'Gnik1999', auth: true}, function(data) {
+//             requesting = false
+//
+//             if(data && data.token){
+//                 auth_token = data.token
+//             }
+//             console.log(data)
+//         })
+//     }
+// }
 
 
 
@@ -258,7 +309,7 @@ var handler_console = function(){
 }
 
 
-var ready = function() {
+var ready_msv = function() {
     if(document.querySelectorAll("#console_terminal").length){
         handler_console();
     }
@@ -283,5 +334,5 @@ var ready = function() {
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    ready()
+    ready_msv()
 });

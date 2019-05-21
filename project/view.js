@@ -5,11 +5,12 @@ var Template = function(path = './templates/') {
     var render = function(res, tpl_name, vars = [], cookies = {}) {
         var head_lines = {'Content-Type': 'text/html'}
 
-        if(cookies){
-            head_lines['Set-Cookie'] = ''
+        if(cookies && Object.keys(cookies).length){
+            var list = []
             for(var key in cookies){
-                head_lines['Set-Cookie'] = `${encodeURI(key)}=${encodeURI(cookies[key])}`
+                list.push(`${encodeURI(key)}=${encodeURI(cookies[key])}`)
             }
+            head_lines['Set-Cookie'] = list.join(';')
         }
         res.writeHead(200, head_lines);
 
