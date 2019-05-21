@@ -1,4 +1,4 @@
-var host = 'localhost'
+var host = '10.211.55.7'
 
 var msv_mapping = {
     'stats': 8001,
@@ -154,6 +154,39 @@ var handler_processes = function(){
     updater()
 }
 
+var handler_users = function(){
+    var updater = _ => {
+        msv_get('users', {}, function(data) {
+            // console.log(data)
+            if(data.error) {
+                return alert("Error getting data:" + data.error)
+            }
+
+            var table_tbody = document.querySelector(".users-table tbody")
+            var content = ""
+
+            for (var user of data.users){
+
+                content += '<tr>'
+                content += `<td>${user.id}</td>`
+                content += `<td>${user.username}</td>`
+                content += `<td>${user.name}</td>`
+                content += `<td>${user.home}</td>`
+                content += `<td>${user.shell}</td>`
+                content += '</tr>'
+
+                // console.log(content)
+                table_tbody.innerHTML = content
+
+            }
+
+        })
+    }
+
+    setInterval(updater, 10 * 1000)
+    updater()
+}
+
 var handler_logs = function() {
 
     var output = document.querySelectorAll("#view-logs-container textarea")[0]
@@ -199,14 +232,11 @@ var handler_configs = function(){
 }
 
 var handler_console = function(){
-    console.log(3)
     var elOut = document.querySelectorAll("#console_terminal pre")[0]
     var elIn = document.querySelectorAll("#console_terminal input")[0]
     var elForm = document.querySelectorAll("#console_terminal form")[0]
-        console.log(5)
 
     elForm.onsubmit = function(){
-        console.log(6)
         var command = elIn.value.trim();
 
         msv_get('console', {'command': command}, function(data){
@@ -229,9 +259,7 @@ var handler_console = function(){
 
 
 var ready = function() {
-    console.log(1)
     if(document.querySelectorAll("#console_terminal").length){
-        console.log(2)
         handler_console();
     }
     if(document.querySelectorAll("#view-logs-container").length){
@@ -245,6 +273,9 @@ var ready = function() {
     }
     if(document.querySelectorAll(".processes-table").length){
         handler_processes()
+    }
+    if(document.querySelectorAll(".users-table").length){
+        handler_users()
     }
     if(document.querySelectorAll("[data-msv=ram_mem]").length){
         handler_home()

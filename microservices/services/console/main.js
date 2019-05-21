@@ -5,11 +5,8 @@ var init = function(port_no){
     path = process.cwd();
 }
 
-var req = function(req, res) {
-
-    res.writeHead(200, {
-        'Access-Control-Allow-Origin': '*',
-    })
+var req = function(req, res, auth) {
+    if(!auth) return res.end(JSON.stringify({error: "Not authed."}))
 
     var command = req.body.command
 

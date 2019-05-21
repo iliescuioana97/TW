@@ -8,11 +8,10 @@ var init = function(port_no){
     // ??
 }
 
-var req = function(req, res) {
+var req = function(req, res, auth) {
+    if(!auth) return res.end(JSON.stringify({error: "Not authed."}))
 
-    res.writeHead(200, {
-        'Access-Control-Allow-Origin': '*',
-    })
+    
     var command_disabled = "systemctl list-unit-files --type service | grep disabled | sed -E -e 's/[[:blank:]]+/\\n/g' | grep -v disabled | tr -s '\\n'"
     var command_enabled = "systemctl list-unit-files --type service | grep enabled | sed -E -e 's/[[:blank:]]+/\\n/g' | grep -v enabled | tr -s '\\n'"
     var command_static = "systemctl list-unit-files --type service | grep static | sed -E -e 's/[[:blank:]]+/\\n/g' | grep -v static | tr -s '\\n'"

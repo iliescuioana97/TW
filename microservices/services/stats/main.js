@@ -8,12 +8,8 @@ var init = function(port_no){
     // ??
 }
 
-var req = function(req, res) {
-
-    res.writeHead(200, {
-        // 'Content-Type': 'text/html',
-        'Access-Control-Allow-Origin': '*',
-    })
+var req = function(req, res, auth) {
+    if(!auth) return res.end(JSON.stringify({error: "Not authed."}))
 
     osu.cpuUsage(cpu => {
         fs.readdir('/dev/fd/', function(err, files){

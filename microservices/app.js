@@ -2,7 +2,9 @@ const fs = require("fs")
 const http = require('http')
 const url = require('url')
 const qs = require('querystring')
+const jwt = require('jsonwebtoken')
 
+const secret = "TheGreatSecretOfThisAppSitsInThisString."
 
 var run = function(argv) {
     const services_path = './services/'
@@ -24,11 +26,16 @@ var run = function(argv) {
 
     try {
         console.log(`Starting service: ${service_name}:${port}`)
-        mod.init()
+        mod.init(port, secret)
 
         http.createServer(function(req, res) {
             parse_body(req, function(req){
-                mod.req(req, res)
+                res.writeHead(200, {'Access-Control-Allow-Origin': '*'})
+
+                do_auth(req, res, (req, res, authed = true) => {
+
+                    mod.req(req, res, authed)
+                })
             })
         }).listen(port);
 
@@ -48,6 +55,25 @@ var parse_body = function(req, next){
     req.on('end', function () {
         req.body = JSON.parse(JSON.stringify(qs.parse(body)))
         next(req)
+    })
+}
+
+var do_auth = function(req, res, next) {
+    if(!req.body.auth && !req.body.token) {
+        return res.end(JSON.stringify({error: "Invalid access."}))
+    }
+
+    if(req.body.auth) {
+        // For auth module only.
+        return next(req, res, false)
+    }
+
+    var token = req.body.token
+    var datau = jwt.verify(token, secret, function(err, decoded) {
+        if(err || decoded.on != 1) {
+            return res.end(JSON.stringify({error: "Invalid token."}))
+        }
+        next(req, res, true)
     })
 }
 
